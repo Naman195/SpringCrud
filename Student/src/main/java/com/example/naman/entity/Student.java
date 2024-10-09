@@ -72,10 +72,5 @@ public class Student {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-	
-	
-	
-	
-	
+	}	
 }
