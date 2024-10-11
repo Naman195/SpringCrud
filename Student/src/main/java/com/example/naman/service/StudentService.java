@@ -29,14 +29,14 @@ public class StudentService {
 		
 	}
 	
-	public Optional<Student> getStudentById(Long id) {
+	public Optional<Student> getStudentById(int id) {
 		
 		return studentRepository.findById(id);
 		
 	}
 	
 	
-	public Student updateStudentyId(Student student , Long id) {
+	public Student updateStudentyId(Student student , int id) {
 		Student existedStudent = studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student Not Found"));
 		existedStudent.setName(student.getName());
 		existedStudent.setEmail(student.getEmail());
@@ -46,7 +46,7 @@ public class StudentService {
 		
 	}
 	
-	public void deleteById(Long id) {
+	public void deleteById(int id) {
 		studentRepository.deleteById(id);
 		
 	}

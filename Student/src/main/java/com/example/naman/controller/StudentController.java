@@ -39,21 +39,21 @@ public class StudentController {
 	
 	// Get Student by Id;
 	@GetMapping("/fetch/{id}")
-	public Optional<Student> getStudentbyId(@PathVariable Long id) {
+	public Optional<Student> getStudentbyId(@PathVariable int id) {
 		return studentService.getStudentById(id);
 		
 	}
 	
 	// Update Student by Id
 	@PutMapping("/update/{id}")
-	public Student updateStuById(@RequestBody Student student,  @PathVariable Long id) {
+	public Student updateStuById(@RequestBody Student student,  @PathVariable int id) {
 		
 		return studentService.updateStudentyId(student, id);
 			
 	}
 	
 	@DeleteMapping("/del/{id}")
-	public String deleteStu(@PathVariable Long id) {
+	public String deleteStu(@PathVariable int id) {
 		studentService.deleteById(id);
 		return "Student Deleted SuccessFully";
 	}

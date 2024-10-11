@@ -9,7 +9,7 @@ import com.example.naman.entity.Student;
 import com.example.naman.repository.StudentRepository;
 
 @SpringBootApplication
-public class StudentApplication implements CommandLineRunner
+public class StudentApplication
 {
 	@Autowired
 	StudentRepository repository;
@@ -18,16 +18,16 @@ public class StudentApplication implements CommandLineRunner
 		System.out.println("Hello");
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		repository.findByCourseStartsWith("sa").forEach(student -> {
-			printStudentName(student);
-		});
-		
-	}
-
-	private void printStudentName(Student student) {
-		System.out.println(student.getName());
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		repository.findByCourseStartsWith("sa").forEach(student -> {
+//			printStudentName(student);
+//		});
+//		
+//	}
+//
+//	private void printStudentName(Student student) {
+//		System.out.println(student.getName());
+//	}
 
 }

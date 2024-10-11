@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.naman</groupId>
-	<artifactId>Student</artifactId>
+	<artifactId>Book-Management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Student</name>
-	<description>crud App with sql</description>
+	<name>Book-Management</name>
+	<description>Book Management</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -54,11 +54,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-    <groupId>jakarta.validation</groupId>
-    <artifactId>jakarta.validation-api</artifactId>
-    <version>3.0.2</version>
-</dependency>
 	</dependencies>
 
 	<build>
