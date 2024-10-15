@@ -4,14 +4,24 @@ import java.time.Instant;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,8 +55,8 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 	
-	@OneToOne
-	@JoinColumn(name = "address_id", nullable = false)
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "address_id")
 	private Address address;
 	
 	
@@ -57,6 +67,12 @@ public class User {
 	@UpdateTimestamp
 	@Column(name = "updated_at")
 	private Instant updatedAt;
+	
+	private Boolean archieved;
+	@PrePersist
+	public void func() {
+		archieved = false;
+	}
 	
 	
 	

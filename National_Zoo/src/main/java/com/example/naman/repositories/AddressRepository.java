@@ -7,4 +7,5 @@ import com.example.naman.entities.Address;
 public interface AddressRepository extends JpaRepository<Address, Long> {
 
 	
+	
 }

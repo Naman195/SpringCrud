@@ -19,7 +19,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 public class City {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name  = "city_id")
@@ -28,13 +27,7 @@ public class City {
 	@Column(name = "city_name", nullable = false)
 	private String cityName;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "state_id", nullable = false)
 	private State state;
-	
-	
-	
-	
-
 }
