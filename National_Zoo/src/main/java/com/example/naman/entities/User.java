@@ -59,7 +59,6 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	
 	@CreationTimestamp
 	@Column(name = "created_at", updatable = false)
 	private Instant createdAt;
@@ -68,13 +67,5 @@ public class User {
 	@Column(name = "updated_at")
 	private Instant updatedAt;
 	
-	private Boolean archieved;
-	@PrePersist
-	public void func() {
-		archieved = false;
-	}
-	
-	
-	
-	
+	private boolean archieved;
 }
