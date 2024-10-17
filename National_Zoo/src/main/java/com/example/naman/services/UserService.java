@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.example.naman.UserDTO.UserResponse;
 import com.example.naman.entities.User;
 import com.example.naman.repositories.CityRepository;
 import com.example.naman.repositories.UserRepository;
@@ -69,20 +72,18 @@ public class UserService {
 		
 	}
 	
-	public String LoginUser(String username, String password)
+	public UserResponse LoginUser(String username, String password)
 	{
 		User user = userRepository.findByuserName(username);
 		if(user ==  null) {
-			return "Wrong Username";
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Wrong Username");
 		}
 //		String pass = user.getPassword();
 		
-		if(!user.getPassword().equals(password)) {
-			return "Wrong Password";
-			
-		}
-		
-		return "LoggedIn SuccessfULLY";
+		if (!user.getPassword().equals(password)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Wrong Password");
+        }		
+		return new UserResponse(user.getUserId(), user.getUserName());
 	}
 	
 	
